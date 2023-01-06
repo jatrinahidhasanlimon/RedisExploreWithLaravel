@@ -43,7 +43,11 @@ class BlogController extends Controller
     {
         //
         $blogs = Blog::all();
-        Redis::set('blogs',  json_encode($blogs));
+//        dd($blogs);
+//        Redis::set('blogs',  json_encode($blogs));
+//        Redis::set('blogs',  json_encode($blogs));
+//        Redis::hSet('blogs_test','w',  json_encode($blogs));
+        Redis::lpush('blogs_test','w2','w3','w4',  json_encode($blogs));
 
         return response()->json([
             'status_code' => 201,
